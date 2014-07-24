@@ -10,4 +10,9 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *lblHumanReable;
+@property (weak, nonatomic) IBOutlet UILabel *lblJsonSummary;
+
+- (void)fetchedData:(NSData *)responseData;
+
 @end
