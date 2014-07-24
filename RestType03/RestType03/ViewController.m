@@ -65,6 +65,25 @@
                                 [loan objectForKey:@"name"],
                                 [(NSDictionary*)[loan objectForKey:@"location"]objectForKey:@"country"],
                                 outstandingAmount];
+    // =============================================
+    //build an info object and convert to json
+    NSDictionary* info = [NSDictionary dictionaryWithObjectsAndKeys:
+                          [loan objectForKey:@"name"],
+                          @"who",
+                          [(NSDictionary*)[loan objectForKey:@"location"]
+                           objectForKey:@"country"],
+                          @"where",
+                          [NSNumber numberWithFloat: outstandingAmount],
+                          @"what",
+                          nil];
+    
+    //convert object to data
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:&error];
+    // ================================================
+    //print out the data contents
+    self.lblJsonSummary.text = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    
     
 }
 
